@@ -126,7 +126,7 @@ public class WeChatModule extends ReactContextBaseJavaModule implements IWXAPIEv
             callback.invoke(NOT_REGISTERED);
             return;
         }
-        callback.invoke(null, api.isWXAppSupportAPI());
+        callback.invoke(null, api.getWXAppSupportAPI()>Build.PAY_SUPPORTED_SDK_INT);
     }
 
     @ReactMethod
@@ -281,7 +281,7 @@ public class WeChatModule extends ReactContextBaseJavaModule implements IWXAPIEv
                         imageCallback.invoke(bitmap);
                     }
                 } else {
-                    throw new Exception("Empty bitmap");
+                    imageCallback.invoke(null);
                 }
             }
 
