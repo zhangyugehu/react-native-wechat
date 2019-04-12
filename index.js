@@ -286,6 +286,19 @@ export function pay(data) {
   });
 }
 
+export function launchMiniProgram(id, path, type) {
+  return new Promise((resolve, reject) => {
+    WeChat.launchMiniProgram({
+      mini_id: id,
+      mini_path: path,
+      type
+    }, (result) => {
+      if (result) reject(result);
+      else resolve()
+    });
+  });
+}
+
 /**
  * promises will reject with this error when API call finish with an errCode other than zero.
  */
